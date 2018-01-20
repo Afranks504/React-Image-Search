@@ -1,0 +1,51 @@
+html, body {
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(15, 16, 17);
+}
+
+.image-card-container {
+  padding: 7px;
+}
+
+.image-list-container {
+  margin-bottom: 20px;
+}
+
+.image-card {
+  border: thin solid rgb(217, 217, 217);
+  text-align: center;
+  background-color: white;
+}
+
+.desc-box {
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 7px;
+  padding-bottom: 10px;
+}
+
+#side-menu {
+  border: thin solid green;
+}
+
+.search-bar {
+  margin: 20px;
+}
+
+.thumbnail-img {
+  text-align: center;
+  overflow: hidden;
+}
+
+.thumbnail-img img {
+  height: 200px;
+}
+
+
+input:focus {
+  border: thin solid rgb(238, 189, 123) !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
