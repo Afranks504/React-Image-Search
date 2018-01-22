@@ -3,7 +3,7 @@ import ImageReducer from './image_reducer';
 import HistoryReducer from './history_reducer';
 
 const rootReducer = combineReducers({
-  term: ImageReducer,
+  images: ImageReducer,
   history: HistoryReducer
 });
 

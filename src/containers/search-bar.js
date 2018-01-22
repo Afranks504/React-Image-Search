@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchImages } from '../actions/index';
 import axios from 'axios';
+import _ from 'lodash';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -20,14 +21,17 @@ class SearchBar extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
+    console.log(this.state.term);
+    this.props.fetchImages(this.state.term)
+    const that = this;
 
-    const API_KEY = '4329057-32f29fac6b16aaa05d4f4322f';
-    const page = 5;
-    const API_URL = `https://pixabay.com/api/?key=${API_KEY}&q=${this.state.term}&page=${page}`;
-
-    axios.get(API_URL).then(({ data }) => {
-      this.props.fetchImages(data);
-    });
+    // Delay update state method.
+    _.delay(() => {
+      that.props.images.then((res) => {
+        console.log('BALLSDEEP! ', res.data.hits);
+        // that.setState({ resolved: true, images: res.data.hits });
+      })
+    }, 500);
   }
 
   render() {
