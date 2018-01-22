@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchImages } from '../actions/index';
+import axios from 'axios';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
+    this.state = { term: '' };
+
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
-
-    this.state = { term: '' };
   }
 
   onInputChange(e) {
@@ -17,14 +21,18 @@ class SearchBar extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    // TODO: create fetch from image API and set state.
-    // this.props.fetchImages(this.state.term);
-    this.setState({ term: '' });
+    const API_KEY = '4329057-32f29fac6b16aaa05d4f4322f';
+    const page = 5;
+    const API_URL = `https://pixabay.com/api/?key=${API_KEY}&q=${this.state.term}&page=${page}`;
+
+    axios.get(API_URL).then(({ data }) => {
+      this.props.fetchImages(data);
+    });
   }
 
   render() {
     return (
-      <div className="row">
+      <div className="row top-nav">
         <div className="search-bar mx-auto col-lg-6">
           <form className="input-group" onSubmit={this.onFormSubmit}>
             <input
@@ -43,4 +51,8 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchImages }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

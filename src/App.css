@@ -4,15 +4,27 @@ html, body {
   background-color: rgb(15, 16, 17);
 }
 
+a:hover {
+  text-decoration: none;
+  outline: none;
+}
+
 .image-card-container {
   padding: 7px;
+  margin-top: 20px;
 }
 
 .image-list-container {
   margin-bottom: 20px;
 }
 
+.image-card:hover {
+  opacity: 1;
+  border: thin solid rgb(224, 119, 161);
+}
+
 .image-card {
+  opacity: 0.9;
   border: thin solid rgb(217, 217, 217);
   text-align: center;
   background-color: white;
@@ -23,11 +35,14 @@ html, body {
   padding-left: 20px;
   padding-top: 7px;
   padding-bottom: 10px;
+  color: rgb(230, 134, 99);
 }
 
 #side-menu {
   border: thin solid green;
 }
+
+.top-nav { background-color: rgb(56, 80, 84); }
 
 .search-bar {
   margin: 20px;
